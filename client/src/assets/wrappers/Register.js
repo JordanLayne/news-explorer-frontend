@@ -72,16 +72,18 @@ const Wrapper = styled.section`
     color: #2f71e5;
     cursor: pointer;
   }
+  .filled {
+    background: #2f71e5;
+    color: white;
+  }
   @media (max-width: 580px) {
     form {
       width: 320px;
       margin-top: 56px;
     }
     .close-btn {
-   
-    left: 315px;
-   
-  }
+      left: 315px;
+    }
     .close-icon {
       height: 16px;
       width: 16px;

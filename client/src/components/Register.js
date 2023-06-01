@@ -38,7 +38,7 @@ const Register = () => {
     setIsLoggedin(true)
     toggleModal()
   };
-
+  const isAllInputsFilled = values.email && values.password && (values.isMember || values.username);
   return (
     <>
       {showModal && (
@@ -75,7 +75,7 @@ const Register = () => {
               </>
             )}
             {showAlert && <Alert />}
-            <button className="register-btn" type="submit">
+            <button className={`register-btn ${isAllInputsFilled ? "filled" : ""}`} type="submit">
               {values.isMember ? "Sign in" : "Sign up"}
             </button>
             <p className="signin-text" onClick={toggleMember}>
