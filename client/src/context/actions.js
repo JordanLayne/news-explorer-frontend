@@ -1,0 +1,8 @@
+export const TOGGLE_DROPDOWN = "TOGGLE_DROPDOWN";
+export const TOGGLE_MODAL = "TOGGLE_MODAL";
+export const TOGGLE_BOOKMARK = "TOGGLE_BOOKMARK";
+export const SET_IS_LOADING = "SET_IS_LOADING";
+export const DISPLAY_ALERT = "SHOW_ALERT";
+export const CLEAR_ALERT = "CLEAR_ALERT";
+export const SET_IS_LOGGEDIN = 'SET_IS_LOGGEDIN'
+export const SIGN_OUT = "SIGN_OUT"
