@@ -7,7 +7,7 @@ const About = () => {
       <div>
         <h1 className="about-title">About the author</h1>
         <p className="about-text">
-          I'm Jordan Layne, a software developer specializing in web development.
+          I'm Jordan Layne, a Software Developer specializing in Web Development.
           With expertise in JavaScript, React, Node.js, and MongoDB, I enjoy
           creating user-friendly and innovative applications. I successfully
           completed the Practicum Software Developer program, where I gained
