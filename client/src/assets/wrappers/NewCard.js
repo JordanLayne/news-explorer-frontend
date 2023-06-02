@@ -11,8 +11,8 @@ const Wrapper = styled.section`
     border-radius: 15px;
     background: #ffffff;
     overflow: hidden;
-    height: 420px;
-    width: 224px;
+    height: 576px;
+    width: 400px;
     border-radius: 15px;
   }
   .bookmark {
@@ -25,7 +25,7 @@ const Wrapper = styled.section`
   .container-top {
     display: flex;
     flex-direction: row;
-    height: 150px;
+    height: 272px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -62,13 +62,13 @@ const Wrapper = styled.section`
     font-weight: 600;
   }
   .container-bottom {
-    height: 270px;
+    height: 304px;
   }
   .container-date {
     margin-top: 20px;
     height: 24px;
     width: 144px;
-    margin-left: 15px;
+    margin-left: 30px;
     margin-bottom: 8px;
     font-family: "Source Sans Pro";
     font-style: normal;
@@ -78,26 +78,27 @@ const Wrapper = styled.section`
     color: #b6bcbf;
   }
   .container-title {
-    height: 72px;
-    width: 192px;
-
+    height: 60px;
+    width: 352px;
     font-family: "Roboto Slab";
     font-style: normal;
     font-weight: 400;
-    font-size: 22px;
-    line-height: 24px;
+    font-size: 26px;
+    line-height: 30px;
     color: #1a1b22;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
+    white-space: normal;
+    word-wrap: break-word;
     margin: 0 auto;
   }
   .container-description {
-    height: 88px;
-    width: 192px;
-    margin: 10px auto 12px;
+    width: 352px;
+    height: 110px;
+    margin: 16px auto 18px;
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
@@ -110,8 +111,8 @@ const Wrapper = styled.section`
     text-overflow: ellipsis;
   }
   .container-author {
+    width: 352px;
     height: 20px;
-    width: 192px;
     margin: 0 auto 16px;
     font-family: "Roboto Slab";
     font-style: normal;

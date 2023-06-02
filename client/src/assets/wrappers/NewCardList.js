@@ -5,12 +5,17 @@ const Wrapper = styled.section`
   flex-direction: column;
   align-items: center;
   max-height: 100%;
- 
+
   .search-title {
-    margin: 32px auto 32px 40px;
+    margin: 32px auto 32px 104px;
+    font-family: "Roboto Slab";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 46px;
   }
-  
-  .show-btn{
+
+  .show-btn {
     margin: 32px auto 40px;
     height: 56px;
     width: 240px;
@@ -21,10 +26,9 @@ const Wrapper = styled.section`
     border: none;
     cursor: pointer;
   }
-.show-btn:hover{
-  background: #E8E8E8;
-opacity: 0.9;
-}
-
+  .show-btn:hover {
+    background: #e8e8e8;
+    opacity: 0.9;
+  }
 `;
 export default Wrapper;
