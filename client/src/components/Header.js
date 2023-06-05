@@ -31,7 +31,7 @@ const Header = () => {
   return (
     <>
       <HeaderWrapper className={showDropdown ? "open" : ""}>
-        <div className="title">NewsExplorer</div>
+        <p className="title">NewsExplorer</p>
         <button className="dropdown mobile" onClick={toggleDropdown}>
           <img
             src={showDropdown ? closeIcon : dropdownIcon}
@@ -42,39 +42,85 @@ const Header = () => {
 
         <button className="home-btn desktop">Home</button>
 
-        {isLoggedIn ? (
-          <>
-            <Link to="saved-articles" className="save-articles-btn desktop">
-              Saved articles
-            </Link>
-            <button className="signedin-btn desktop" onClick={signOut}>
-              <p className="btn-text">Elise</p>
-              <img className="btn-img" src={logoutIcon} alt="logout" />
-            </button>
-          </>
-        ) : (
-          <button className="signin-btn desktop" onClick={toggleModal}>
-            Sign in
-          </button>
-        )}
+        <nav>
+          <ul className="menu desktop">
+            {isLoggedIn ? (
+              <>
+                <li>
+                  <Link
+                    to="saved-articles"
+                    className="save-articles-btn desktop"
+                  >
+                    Saved articles
+                  </Link>
+                </li>
+                <li>
+                  <button className="signedin-btn desktop" onClick={signOut}>
+                    <p className="btn-text">Elise</p>
+                    <img className="btn-img" src={logoutIcon} alt="logout" />
+                  </button>
+                </li>
+              </>
+            ) : (
+              <li>
+                <button
+                  className="signin-btn desktop"
+                  onClick={() => toggleModal(true, "register")}
+                >
+                  Sign in
+                </button>
+              </li>
+            )}
+          </ul>
+        </nav>
       </HeaderWrapper>
       {showDropdown && (
         <DropdownContent
           className={`dropdown-content ${showDropdown ? "open" : ""}`}
         >
           <div className="container">
-            <Link to="/" className="dropdown-home" onClick={toggleDropdown}>
-              Home
-            </Link>
-            {!isLoggedIn ? (
-              <button className="dropdown-signin" onClick={toggleModal}>
-                Sign in
-              </button>
-            ) : (
-              <button className="dropdown-signin" onClick={signOut}>
-                Sign out
-              </button>
-            )}
+            <nav>
+              <ul className="dropdown-menu">
+                {!isLoggedIn ? (
+                  <>
+                    <li>
+                      <Link
+                        to="/"
+                        className="dropdown-home"
+                        onClick={toggleDropdown}
+                      >
+                        Home
+                      </Link>
+                    </li>
+                    <li>
+                      <button
+                        className="dropdown-signin"
+                        onClick={() => toggleModal(true, "register")}
+                      >
+                        Sign in
+                      </button>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <Link
+                        to="saved-articles"
+                        className="dropdown-home"
+                        onClick={toggleDropdown}
+                      >
+                        Saved Articles
+                      </Link>
+                    </li>
+                    <li>
+                      <button className="dropdown-signin" onClick={signOut}>
+                        Sign out
+                      </button>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </nav>
           </div>
         </DropdownContent>
       )}

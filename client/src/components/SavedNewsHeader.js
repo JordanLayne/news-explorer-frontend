@@ -9,7 +9,7 @@ import logoutIcon from "../assets/images/UnionDark.svg";
 import { useEffect } from "react";
 
 const SavedNewsHeader = () => {
-  const { toggleDropdown, showDropdown, toggleModal } = useAppContext();
+  const { toggleDropdown, showDropdown, signOut } = useAppContext();
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 732 && showDropdown) {
@@ -27,11 +27,12 @@ const SavedNewsHeader = () => {
     };
   }, [showDropdown, toggleDropdown]);
 
- 
   return (
     <>
       <HeaderWrapper className={showDropdown ? "open" : ""}>
-        <div className="title">NewsExplorer</div>
+        <div className={`title ${showDropdown ? "opened" : ""}`}>
+          NewsExplorer
+        </div>
         <button className="dropdown mobile" onClick={toggleDropdown}>
           <img
             src={showDropdown ? closeIcon : dropdownIcon}
@@ -40,14 +41,19 @@ const SavedNewsHeader = () => {
           />
         </button>
 
-        <Link to="/" className="home-btn desktop">Home</Link>
+        <Link to="/" className="home-btn desktop">
+          Home
+        </Link>
 
-        <p className="save-articles-btn desktop " onClick={() => {}}>
-          Saved articles
-        </p>
-        <button className="signedin-btn desktop" onClick={() => {}}>
+        <p className="save-articles-btn desktop ">Saved articles</p>
+        <button className="signedin-btn desktop">
           <p className="btn-text">Elise</p>
-          <img className="btn-img" src={logoutIcon} alt="logout" />
+          <img
+            className="btn-img"
+            src={logoutIcon}
+            alt="logout"
+            onClick={signOut}
+          />
         </button>
       </HeaderWrapper>
       {showDropdown && (
@@ -55,8 +61,10 @@ const SavedNewsHeader = () => {
           className={`dropdown-content ${showDropdown ? "open" : ""}`}
         >
           <div className="container">
-            <p className="dropdown-home">Home</p>
-            <button className="dropdown-signin" onClick={toggleModal}>
+            <Link to="/" className="dropdown-home" onClick={toggleDropdown}>
+              Home
+            </Link>
+            <button className="dropdown-signin" onClick={signOut}>
               Sign out
             </button>
           </div>

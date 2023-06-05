@@ -8,53 +8,65 @@ const Wrapper = styled.section`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   margin: 0;
-  display: flex;
   opacity: 1;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  form {
+
+  .register-modal {
+    margin: 0 auto;
+    width: 430px;
+    min-height: 383px;
+    background: #ffffff;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+  }
+  .register-modal__title {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;
+    margin-left: 36px;
+    margin-top: 34px;
+  }
+
+  .register-modal__close-btn {
+    display: flex;
+    width: 485px;
+    max-width: 100%;
+    height: 40px;
+    margin: 0 auto;
+    background: none;
     border: none;
     padding: 0;
-    margin: 0;
-    width: 496px;
-    background-color: white;
-    border-radius: 10px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
   }
-  h3 {
-    margin: 28px auto 24px 28px;
-    font-family: "Cabinet Grotesk";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
-  }
-  .close-btn {
-    position: relative;
-    width: 16px;
-    height: 16px;
-    border: none;
-    left: 495px;
-    bottom: 100px;
-    margin-right: 30px;
-    background: none;
-    cursor: pointer;
-  }
-  .close-icon {
+  .register-modal__close-icon {
     height: 20px;
     width: 20px;
+    margin: auto 0 auto auto;
+    padding: 0;
+    cursor: pointer;
   }
-  .register-btn {
-    align-self: center;
+  .register-modal__register-btn {
+    margin-left: 36px;
     height: 64px;
-    width: 360px;
+    width: 358px;
+    background: #e6e8eb;
     border-radius: 100px;
-    margin-top: 8px;
+    color: #b6bcbf;
+    margin-top: 12px;
+    border: none;
+    cursor: pointer;
   }
-  .signin-text {
-    align-self: center;
+  .register-modal__register-btn--filled:hover {
+    background: #347eff;
+  }
+  .register-modal__register-btn--filled {
+    background: #2f71e5;
+    color: white;
+  }
+  .register-modal__toggle-text {
     font-family: "Inter";
     font-style: normal;
     font-weight: 400;
@@ -63,51 +75,88 @@ const Wrapper = styled.section`
     text-align: center;
   }
   span {
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    text-align: center;
     color: #2f71e5;
     cursor: pointer;
   }
-  .filled {
-    background: #2f71e5;
-    color: white;
+  .success-modal {
+    margin: 0 auto;
+    height: 182px;
+    width: 430px;
+    background: #ffffff;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
   }
-  @media (max-width: 580px) {
-    form {
-      width: 320px;
-      margin-top: 56px;
-    }
-    .close-btn {
-      left: 315px;
-    }
-    .close-icon {
-      height: 16px;
-      width: 16px;
-    }
-    .register-btn {
-      height: 64px;
-      width: 288px;
-    }
+  .success-modal__title {
+    margin-top: 43px;
+    margin-left: 36px;
+    margin-bottom: 14px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 28px;
   }
-  @media (max-width: 322px) {
-    form {
+  .success-modal__signin-btn {
+    margin-left: 36px;
+    background: none;
+    border: none;
+    color: #2f71e5;
+    cursor: pointer;
+  }
+  .success-modal__close-btn {
+    display: flex;
+    width: 485px;
+    max-width: 100%;
+    height: 40px;
+    margin: 0 auto;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  .success-modal__close {
+    height: 20px;
+    width: 20px;
+    margin: auto 0 auto auto;
+    padding: 0;
+    cursor: pointer;
+  }
+  @media (max-width: 532px) {
+    .register-modal {
       width: 100%;
       height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .close-btn {
-      position: relative;
-      width: 16px;
-      height: 16px;
-      border: none;
-      left: 280px;
-      bottom: 97px;
-      margin-right: 30px;
-      background: none;
-      cursor: pointer;
+    .register-modal__title {
+      width: 288px;
+      margin-left: 0;
+    }
+    .register-modal__register-btn {
+      margin-left: 0;
+      width: 288px;
+    }
+    .register-modal__toggle-text {
+      width: 288px;
+    }
+    .register-modal__close-icon {
+      margin-right: 21px;
+    }
+    .success-modal__close {
+      margin-right: 21px;
+    }
+    .success-modal {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .success-modal__signin-btn {
+      margin-left: 0;
+    }
+    .success-modal__title {
+      margin-left: 0;
     }
   }
 `;

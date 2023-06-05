@@ -1,12 +1,13 @@
 import styled from "styled-components";
-const Wrapper = styled.section`
+
+const CardListWrapper = styled.section`
   background: #f5f6f7;
   display: flex;
   flex-direction: column;
   align-items: center;
   max-height: 100%;
 
-  .search-title {
+  .card-list__search-title {
     margin: 32px auto 32px 104px;
     font-family: "Roboto Slab";
     font-style: normal;
@@ -15,7 +16,7 @@ const Wrapper = styled.section`
     line-height: 46px;
   }
 
-  .show-btn {
+  .card-list__show-btn {
     margin: 32px auto 40px;
     height: 56px;
     width: 240px;
@@ -26,9 +27,59 @@ const Wrapper = styled.section`
     border: none;
     cursor: pointer;
   }
-  .show-btn:hover {
+
+  .card-list__show-btn:hover {
     background: #e8e8e8;
     opacity: 0.9;
   }
+  
+  .card-list__no-result-container {
+    margin-top: 86px;
+    margin-bottom: 80px;
+  }
+  
+  .card-list__no-result-title {
+    text-align: center;
+    font-family: "Roboto Slab";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 30px;
+  }
+  
+  .card-list__no-result-text {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    height: 48px;
+    color: #b6bcbf;
+  }
+  
+  .card-list__no-result-img {
+    margin-left: 65px;
+  }
+
+  @media (max-width: 800px) {
+    .card-list__search-title {
+      margin-left: 40px;
+    }
+  }
+
+  @media (max-width: 532px) {
+    .card-list__search-title {
+      width: 288px;
+      margin-left: auto;
+      margin-right: auto;
+      font-family: "Roboto Slab";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 30px;
+      line-height: 34px;
+    }
+  }
 `;
-export default Wrapper;
+
+export default CardListWrapper;

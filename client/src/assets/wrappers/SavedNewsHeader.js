@@ -3,7 +3,7 @@ import styled from "styled-components";
 const HeaderWrapper = styled.section`
   display: flex;
   height: 80px;
-  border-bottom: solid rgba(0, 0, 0, .01);
+  border-bottom: solid rgba(0, 0, 0, 0.01);
   align-items: center;
 
   &.open {
@@ -16,11 +16,14 @@ const HeaderWrapper = styled.section`
     font-size: 16px;
     line-height: 24px;
     margin-right: auto;
-    margin-left: 16px;
+    margin-left: 104px;
     align-self: center;
     color: black;
   }
 
+  .opened {
+    color: white;
+  }
   .signedin-btn {
     display: flex;
     height: 48px;
@@ -32,7 +35,7 @@ const HeaderWrapper = styled.section`
     align-items: center;
     justify-content: center;
     padding: 0;
-    margin-right: 40px;
+    margin-right: 104px;
   }
 
   .btn-txt {
@@ -109,10 +112,21 @@ const HeaderWrapper = styled.section`
   }
   .btn-img {
     margin-left: 12px;
+  cursor: pointer;
   }
-  
- 
-  
+
+  @media (max-width: 900px) {
+    .title {
+      margin-left: 40px;
+    }
+    .signin-btn {
+      margin-right: 40px;
+    }
+    .signedin-btn {
+      margin-right: 40px;
+    }
+  }
+
   @media (min-width: 732px) {
     .mobile {
       display: none;
@@ -122,6 +136,15 @@ const HeaderWrapper = styled.section`
   @media (max-width: 732px) {
     .desktop {
       display: none;
+    }
+    .title {
+      margin-left: 16px;
+    }
+    .signin-btn {
+      margin-right: 16px;
+    }
+    .dropdown {
+      margin-right: 16px;
     }
   }
 `;
@@ -158,6 +181,7 @@ const DropdownContent = styled.div`
     font-size: 18px;
     line-height: 56px;
     margin-bottom: 22px;
+    text-decoration: none;
   }
 
   .dropdown-signin {

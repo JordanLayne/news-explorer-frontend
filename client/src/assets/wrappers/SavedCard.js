@@ -3,7 +3,6 @@ import styled from "styled-components";
 const Wrapper = styled.section`
   display: flex;
   flex-wrap: wrap;
-  margin: 0 auto;
   gap: 8px;
   justify-content: center;
   .container {
@@ -15,8 +14,60 @@ const Wrapper = styled.section`
     height: 576px;
     width: 400px;
     border-radius: 15px;
+    margin:0;
   }
-
+  .container-keyword {
+    height: 40px;
+    width: 87px;
+    border-radius: 10px;
+    background: white;
+    margin-left: 24px;
+    margin-top: 24px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .confirm-remove {
+    height: 40px;
+    width: 159px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 22px rgba(59, 74, 116, 0.1);
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 24px;
+    margin-left: 61px;
+    justify-content: center;
+    margin-right: 5px;
+    background: white;
+    border: none;
+    cursor: pointer;
+  }
+  .container-delete {
+    height: 40px;
+    width: 40px;
+    border-radius: 8px;
+    margin-top: 24px;
+    margin-right: 24px;
+    background-color: white;
+    border: none;
+    margin-left: auto;
+    cursor: pointer;
+  }
+  .container-delete:hover img {
+    filter: brightness(0.1);
+  }
   .container-save:hover img {
     filter: brightness(0.1);
   }
@@ -151,6 +202,7 @@ const Wrapper = styled.section`
       width: 192px;
       height: 20px;
     }
+   
   }
 
   @media (max-width: 532px) {

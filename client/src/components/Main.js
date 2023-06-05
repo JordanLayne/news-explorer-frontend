@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Navigation from "./Navigation";
 import Register from "./Register";
+import NewCardList from "./NewsCardList";
 const Main = () => {
   return (
     <Wrapper>
@@ -11,7 +12,7 @@ const Main = () => {
         <Header />
         <Navigation />
       </div>
-
+      <NewCardList />
       <About />
       <Footer />
       <Register />

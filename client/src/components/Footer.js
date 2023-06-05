@@ -20,23 +20,27 @@ const Footer = () => {
     <Wrapper>
       <p className="footer-text">© 2021 Supersite, Powered by News API</p>
       <div className="btn-container">
-        <Link to="/" className="home-btn">Home</Link>
+        <Link to="/" className="home-btn">
+          Home
+        </Link>
         <button className="practicum-btn" onClick={handlePracticumClick}>
           Practicum
         </button>
       </div>
-      <img
-        src={gh}
-        alt="github"
-        className="gh-icon"
-        onClick={handleGithubClick}
-      />
-      <img
-        src={fb}
-        alt="facebook"
-        className="fb-icon"
-        onClick={handleFacebookClick}
-      />
+      <div className="icon-container">
+        <img
+          src={gh}
+          alt="github"
+          className="gh-icon"
+          onClick={handleGithubClick}
+        />
+        <img
+          src={fb}
+          alt="facebook"
+          className="fb-icon"
+          onClick={handleFacebookClick}
+        />
+      </div>
     </Wrapper>
   );
 };

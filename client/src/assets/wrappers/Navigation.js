@@ -4,6 +4,7 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   margin: 80px auto 0;
+
   .nav-title {
     font-family: "Roboto Slab";
     font-style: normal;
@@ -55,6 +56,9 @@ const Wrapper = styled.section`
   .nav-btn:hover{
     background: #347EFF;
   }
+  .nav-btn.clicked {
+  background: #2A65CC;
+}
   @media (max-width: 732px) {
     margin-bottom: 0;
     .nav-input {

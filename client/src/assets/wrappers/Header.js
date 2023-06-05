@@ -3,7 +3,7 @@ import styled from "styled-components";
 const HeaderWrapper = styled.section`
   display: flex;
   height: 80px;
-  border-bottom: solid rgba(255, 255, 255, .01);
+  border-bottom: solid rgba(255, 255, 255, 0.01);
   align-items: center;
 
   &.open {
@@ -12,11 +12,12 @@ const HeaderWrapper = styled.section`
 
   .title {
     font-family: "Roboto Slab";
+    font-style: normal;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 24px;
     margin-right: auto;
-    margin-left: 16px;
+    margin-left: 104px;
     align-self: center;
     color: #ffffff;
   }
@@ -32,7 +33,7 @@ const HeaderWrapper = styled.section`
     align-items: center;
     justify-content: center;
     padding: 0;
-    margin-right: 40px;
+    margin-right: 104px;
   }
 
   .btn-txt {
@@ -49,15 +50,19 @@ const HeaderWrapper = styled.section`
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+  .menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+  }
   .save-articles-active-btn {
     height: 40px;
     width: 100px;
-
     color: black;
     border-radius: 100px;
     border: 1px solid #d1d2d6;
   }
-
+  
   .save-articles-btn {
     font-family: "Roboto";
     font-weight: 500;
@@ -137,7 +142,19 @@ const HeaderWrapper = styled.section`
     cursor: pointer;
   }
  
-  
+
+  @media (max-width: 900px) {
+    .title {
+      margin-left: 40px;
+    }
+    .signin-btn {
+      margin-right: 40px;
+    }
+    .signedin-btn {
+      margin-right: 40px;
+    }
+  }
+
   @media (min-width: 732px) {
     .mobile {
       display: none;
@@ -147,6 +164,15 @@ const HeaderWrapper = styled.section`
   @media (max-width: 732px) {
     .desktop {
       display: none;
+    }
+    .title {
+      margin-left: 16px;
+    }
+    .signin-btn {
+      margin-right: 16px;
+    }
+    .dropdown {
+      margin-right: 16px;
     }
   }
 `;
@@ -161,6 +187,10 @@ const DropdownContent = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
   flex-direction: column;
 
+  .dropdown-menu {
+    margin: 0;
+    padding: 0;
+  }
   .container {
     background: black;
     width: 100%;

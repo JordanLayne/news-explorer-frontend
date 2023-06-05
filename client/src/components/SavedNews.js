@@ -1,7 +1,8 @@
 import Wrapper from "../assets/wrappers/SavedNews";
 
 const SavedNews = () => {
-    return (
+  return (
+    <>
       <Wrapper>
         <div className="saved-news-container">
           <p className="saved-news-title">Saved articles</p>
@@ -10,11 +11,9 @@ const SavedNews = () => {
             By keywords: <b>Nature, Yellowstone, and 2 others</b>
           </p>
         </div>
-        <div className="saved-articles-container">
-          <p>hello</p>
-        </div>
       </Wrapper>
-    );
-  };
-  
-  export default SavedNews;
+    </>
+  );
+};
+
+export default SavedNews;
