@@ -24,6 +24,7 @@ const NewCardList = () => {
       setIsLoading(false);
     };
     if (searchButtonClicked) {
+      setVisibleResults(3); 
       fetchSearchResults();
     }
     // eslint-disable-next-line
