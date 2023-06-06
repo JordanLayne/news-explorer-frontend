@@ -6,10 +6,13 @@ const Wrapper = styled.section`
   align-items: center;
   justify-content: space-between;
   height: 80px;
+
   .btn-container {
     margin: 0 41px 0 auto;
     padding: 0;
+    list-style: none;
   }
+
   .icon-container {
     margin: 0 106px 0 0;
     padding: 0;
@@ -19,15 +22,29 @@ const Wrapper = styled.section`
     margin-right: 27px;
     cursor: pointer;
   }
+
   .fb-icon {
     cursor: pointer;
   }
+
   .footer-text {
     margin: 0;
     padding: 0;
     margin-left: 104px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #b6bcbf;
   }
-  .home-btn {
+
+  .footer-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-nav__link {
     margin-right: 40px;
     font-family: "Roboto";
     font-style: normal;
@@ -38,7 +55,8 @@ const Wrapper = styled.section`
     color: black;
     cursor: pointer;
   }
-  .practicum-btn {
+
+  .footer-nav__button {
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
@@ -49,14 +67,7 @@ const Wrapper = styled.section`
     background: none;
     border: none;
     cursor: pointer;
-  }
-  .footer-text {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-    color: #b6bcbf;
+    padding: 0;
   }
 
   @media (max-width: 800px) {
@@ -68,7 +79,8 @@ const Wrapper = styled.section`
     .footer-text {
       margin: 0 auto 0 40px;
     }
-    .practicum-btn{
+
+    .footer-nav__button {
       padding: 0;
     }
   }
@@ -79,6 +91,7 @@ const Wrapper = styled.section`
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
+
     .btn-container {
       display: flex;
       flex-direction: column;
@@ -87,6 +100,7 @@ const Wrapper = styled.section`
       justify-content: space-between;
       margin: 0 0 22px 0;
     }
+
     .icon-container {
       height: 74px;
       margin: 0;
@@ -97,17 +111,19 @@ const Wrapper = styled.section`
     .gh-icon {
       margin-right: 27px;
     }
-    .practicum-btn {
-      margin-right: auto;
-      padding: 0;
-    }
+
     .footer-text {
       order: 3;
       margin: 0 auto 22px;
     }
-    .home-btn {
-      margin-right: 0px;
+    .footer-nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .footer-nav__link {
+      margin-bottom: 26px;
     }
   }
 `;
+
 export default Wrapper;

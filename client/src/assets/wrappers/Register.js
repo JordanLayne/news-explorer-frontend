@@ -57,6 +57,11 @@ const Wrapper = styled.section`
     color: #b6bcbf;
     margin-top: 12px;
     border: none;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
     cursor: pointer;
   }
   .register-modal__register-btn--filled:hover {

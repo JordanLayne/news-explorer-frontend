@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const HeaderWrapper = styled.section`
+const HeaderWrapper = styled.header`
   display: flex;
   height: 80px;
   border-bottom: solid rgba(255, 255, 255, 0.01);
@@ -10,7 +10,7 @@ const HeaderWrapper = styled.section`
     background-color: black;
   }
 
-  .title {
+  .header__title {
     font-family: "Roboto Slab";
     font-style: normal;
     font-weight: 700;
@@ -22,7 +22,7 @@ const HeaderWrapper = styled.section`
     color: #ffffff;
   }
 
-  .signedin-btn {
+  .header__signedin-btn {
     display: flex;
     height: 48px;
     width: 112px;
@@ -36,7 +36,7 @@ const HeaderWrapper = styled.section`
     margin-right: 104px;
   }
 
-  .btn-txt {
+  .header__btn-text {
     padding: 0;
     margin: 0;
     height: 24px;
@@ -50,20 +50,22 @@ const HeaderWrapper = styled.section`
     white-space: nowrap;
     text-overflow: ellipsis;
   }
-  .menu {
+
+  .header__menu {
     display: flex;
     align-items: center;
     list-style: none;
   }
-  .save-articles-active-btn {
+
+  .header__save-articles-active-btn {
     height: 40px;
     width: 100px;
     color: black;
     border-radius: 100px;
     border: 1px solid #d1d2d6;
   }
-  
-  .save-articles-btn {
+
+  .header__save-articles-btn {
     font-family: "Roboto";
     font-weight: 500;
     font-size: 18px;
@@ -74,11 +76,11 @@ const HeaderWrapper = styled.section`
     text-decoration: none;
   }
 
-  .save-articles-btn:hover {
+  .header__save-articles-btn:hover {
     font-size: 19px;
   }
 
-  .dropdown {
+  .header__dropdown {
     margin-right: 24px;
     align-self: center;
     background: none;
@@ -86,7 +88,7 @@ const HeaderWrapper = styled.section`
     cursor: pointer;
   }
 
-  .home-btn {
+  .header__home-btn {
     font-family: "Roboto";
     font-weight: 500;
     font-size: 18px;
@@ -101,12 +103,12 @@ const HeaderWrapper = styled.section`
     padding-bottom: 23px;
   }
 
-  .home-btn:hover {
+  .header__home-btn:hover {
     cursor: pointer;
     font-size: 19px;
   }
 
-  .signin-btn {
+  .header__signin-btn {
     height: 48px;
     width: 176px;
     background: none;
@@ -120,58 +122,58 @@ const HeaderWrapper = styled.section`
     line-height: 24px;
   }
 
-  .signin-btn:hover {
+  .header__signin-btn:hover {
     cursor: pointer;
     border: 2px solid #ffffff;
     font-weight: 700;
   }
 
-  .header-btn {
+  .header__btn {
     display: flex;
     height: 21px;
     width: 21px;
   }
 
-  .header-bg {
+  .header__header-bg {
     background-color: black;
     width: 100%;
     height: 100%;
   }
-  .btn-img {
+
+  .header__btn-img {
     margin-left: 12px;
     cursor: pointer;
   }
- 
 
   @media (max-width: 900px) {
-    .title {
+    .header__title {
       margin-left: 40px;
     }
-    .signin-btn {
+    .header__signin-btn {
       margin-right: 40px;
     }
-    .signedin-btn {
+    .header__signedin-btn {
       margin-right: 40px;
     }
   }
 
   @media (min-width: 732px) {
-    .mobile {
+    .header__mobile {
       display: none;
     }
   }
 
   @media (max-width: 732px) {
-    .desktop {
+    .header__desktop {
       display: none;
     }
-    .title {
+    .header__title {
       margin-left: 16px;
     }
-    .signin-btn {
+    .header__signin-btn {
       margin-right: 16px;
     }
-    .dropdown {
+    .header__dropdown {
       margin-right: 16px;
     }
   }
@@ -187,11 +189,11 @@ const DropdownContent = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
   flex-direction: column;
 
-  .dropdown-menu {
+  .header__dropdown-menu {
     margin: 0;
     padding: 0;
   }
-  .container {
+  .header-container {
     background: black;
     width: 100%;
     display: flex;
@@ -199,11 +201,11 @@ const DropdownContent = styled.div`
     align-items: center;
   }
 
-  .dropdown-content {
+  .header__dropdown-content {
     background: black;
   }
 
-  .dropdown-home {
+  .header__dropdown-home {
     margin: 0 auto;
     color: white;
     height: 56px;
@@ -216,7 +218,7 @@ const DropdownContent = styled.div`
     text-decoration: none;
   }
 
-  .dropdown-signin {
+  .header__dropdown-signin {
     margin: 0 auto 24px;
     height: 56px;
     width: 288px;
@@ -226,12 +228,12 @@ const DropdownContent = styled.div`
     color: white;
   }
 
-  .dropdown-home:hover {
+  .header__dropdown-home:hover {
     cursor: pointer;
     font-size: 19px;
   }
 
-  .dropdown-signin:hover {
+  .header__dropdown-signin:hover {
     cursor: pointer;
     border: 2px solid #ffffff;
     font-weight: 700;

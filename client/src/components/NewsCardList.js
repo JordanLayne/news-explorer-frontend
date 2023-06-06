@@ -24,7 +24,7 @@ const NewCardList = () => {
       setIsLoading(false);
     };
     if (searchButtonClicked) {
-      setVisibleResults(3); 
+      setVisibleResults(3);
       fetchSearchResults();
     }
     // eslint-disable-next-line
@@ -43,23 +43,25 @@ const NewCardList = () => {
           {results && results.length > visibleResults ? (
             <h1 className="card-list__search-title">Search results</h1>
           ) : null}
-          <div className="card-list__search-results">
+          <ul className="card-list__search-results">
             {results && results.length > 0 ? (
               <NewCard searchResults={results.slice(0, visibleResults)} />
             ) : (
-              <div className="card-list__no-result-container">
-                <img
-                  src={img}
-                  alt="Not Found"
-                  className="card-list__no-result-img"
-                />
-                <p className="card-list__no-result-title">Nothing found</p>
-                <p className="card-list__no-result-text">
-                  Sorry, but nothing matched your search terms.
-                </p>
-              </div>
+              <li className="card-list__no-result-container">
+                <article className="card-list__no-result-article">
+                  <img
+                    src={img}
+                    alt="Not Found"
+                    className="card-list__no-result-img"
+                  />
+                  <p className="card-list__no-result-title">Nothing found</p>
+                  <p className="card-list__no-result-text">
+                    Sorry, but nothing matched your search terms.
+                  </p>
+                </article>
+              </li>
             )}
-          </div>
+          </ul>
           {results && results.length > visibleResults && (
             <button className="card-list__show-btn" onClick={handleShowMore}>
               Show more

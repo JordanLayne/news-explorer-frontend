@@ -16,28 +16,31 @@ const Footer = () => {
   const handleGithubClick = () => {
     window.open("https://github.com/", "_blank");
   };
+
   return (
     <Wrapper>
       <p className="footer-text">© 2021 Supersite, Powered by News API</p>
       <div className="btn-container">
-        <Link to="/" className="home-btn">
-          Home
-        </Link>
-        <button className="practicum-btn" onClick={handlePracticumClick}>
-          Practicum
-        </button>
+        <nav className="footer-nav">
+          <Link to="/" className="footer-nav__link">
+            Home
+          </Link>
+          <button className="footer-nav__button" onClick={handlePracticumClick}>
+            Practicum
+          </button>
+        </nav>
       </div>
       <div className="icon-container">
         <img
           src={gh}
           alt="github"
-          className="gh-icon"
+          className="icon-container__icon gh-icon"
           onClick={handleGithubClick}
         />
         <img
           src={fb}
           alt="facebook"
-          className="fb-icon"
+          className="icon-container__icon fb-icon"
           onClick={handleFacebookClick}
         />
       </div>

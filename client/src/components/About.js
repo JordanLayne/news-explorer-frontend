@@ -5,7 +5,7 @@ const About = () => {
     <Wrapper>
       <img className="about-img" src={pfp} alt="profile" />
       <div>
-        <h1 className="about-title">About the author</h1>
+        <h2 className="about-title">About the author</h2>
         <p className="about-text">
           I'm Jordan Layne, a Software Developer specializing in Web
           Development. With expertise in JavaScript, React, Node.js, and

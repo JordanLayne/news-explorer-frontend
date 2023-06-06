@@ -1,5 +1,6 @@
 import styled from "styled-components";
-
+import trash from "../images/trash.svg";
+import trashactive from "../images/trash-active.svg";
 const Wrapper = styled.section`
   display: flex;
   flex-wrap: wrap;
@@ -14,7 +15,7 @@ const Wrapper = styled.section`
     height: 576px;
     width: 400px;
     border-radius: 15px;
-    margin:0;
+    margin: 0;
   }
   .container-keyword {
     height: 40px;
@@ -33,7 +34,7 @@ const Wrapper = styled.section`
     align-items: center;
     justify-content: center;
   }
-  .confirm-remove {
+  .container-remove {
     height: 40px;
     width: 159px;
     border-radius: 10px;
@@ -63,15 +64,17 @@ const Wrapper = styled.section`
     background-color: white;
     border: none;
     margin-left: auto;
+    background-image: url(${trash});
+    background-position: center;
+    background-repeat: no-repeat;
     cursor: pointer;
   }
-  .container-delete:hover img {
-    filter: brightness(0.1);
+  .container-delete:hover {
+    background-image: url(${trashactive});
   }
-  .container-save:hover img {
-    filter: brightness(0.1);
+  .deleted {
+    background-image: url(${trashactive});
   }
-
   .container-top {
     display: flex;
     flex-direction: row;
@@ -202,7 +205,6 @@ const Wrapper = styled.section`
       width: 192px;
       height: 20px;
     }
-   
   }
 
   @media (max-width: 532px) {

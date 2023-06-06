@@ -7,7 +7,7 @@ const Wrapper = styled.section`
   align-items: center;
   flex-direction: column;
 
-  .circle-preloader {
+  .preloader-circle {
     display: block;
     width: 50px;
     height: 50px;

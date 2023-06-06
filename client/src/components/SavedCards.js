@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Wrapper from "../assets/wrappers/SavedCard";
-import trash from "../assets/images/trash.svg";
 
 const SavedCard = ({ searchResults }) => {
   const [confirmRemoveId, setConfirmRemoveId] = useState(null);
@@ -31,22 +30,22 @@ const SavedCard = ({ searchResults }) => {
 
               {confirmRemoveId === card.id && (
                 <button
-                  className="confirm-remove"
+                  className="container-remove"
                   onClick={handleConfirmRemove}
                 >
                   Remove from saved
                 </button>
               )}
               <button
-                className="container-delete"
+                className={`container-delete ${
+                  confirmRemoveId === card.id ? "deleted" : ""
+                }`}
                 onClick={() => handleRemoveCard(card.id)}
-              >
-                <img src={trash} alt="Delete" />
-              </button>
+              ></button>
             </div>
             <div className="container-bottom">
               <p className="container-date">{card.date}</p>
-              <p className="container-title">{card.title}</p>
+              <h2 className="container-title">{card.title}</h2>
               <p className="container-description">{card.description}</p>
               <p className="container-author">{card.author}</p>
             </div>

@@ -10,7 +10,7 @@ const HeaderWrapper = styled.section`
     background-color: black;
   }
 
-  .title {
+  .header__title {
     font-family: "Roboto Slab";
     font-weight: 700;
     font-size: 16px;
@@ -21,10 +21,11 @@ const HeaderWrapper = styled.section`
     color: black;
   }
 
-  .opened {
+  .header__title--opened {
     color: white;
   }
-  .signedin-btn {
+
+  .header__signedin-btn {
     display: flex;
     height: 48px;
     width: 112px;
@@ -38,7 +39,7 @@ const HeaderWrapper = styled.section`
     margin-right: 104px;
   }
 
-  .btn-txt {
+  .header__btn-text {
     padding: 0;
     margin: 0;
     height: 24px;
@@ -53,7 +54,7 @@ const HeaderWrapper = styled.section`
     text-overflow: ellipsis;
   }
 
-  .save-articles-btn {
+  .header__save-articles-btn {
     font-family: "Roboto";
     font-weight: 500;
     font-size: 18px;
@@ -66,11 +67,11 @@ const HeaderWrapper = styled.section`
     padding-bottom: 23px;
   }
 
-  .save-articles-btn:hover {
+  .header__save-articles-btn:hover {
     font-size: 19px;
   }
 
-  .dropdown {
+  .header__dropdown {
     margin-right: 24px;
     align-self: center;
     background: none;
@@ -78,7 +79,7 @@ const HeaderWrapper = styled.section`
     cursor: pointer;
   }
 
-  .home-btn {
+  .header__home-btn {
     font-family: "Roboto";
     font-weight: 500;
     font-size: 18px;
@@ -94,57 +95,60 @@ const HeaderWrapper = styled.section`
     text-decoration: none;
   }
 
-  .home-btn:hover {
+  .header__home-btn:hover {
     cursor: pointer;
     font-size: 19px;
   }
 
-  .header-btn {
+  .header__btn {
     display: flex;
     height: 21px;
     width: 21px;
   }
 
-  .header-bg {
+  .header__bg {
     background-color: black;
     width: 100%;
     height: 100%;
   }
-  .btn-img {
+  .header__btn-img {
     margin-left: 12px;
-  cursor: pointer;
+    cursor: pointer;
   }
 
   @media (max-width: 900px) {
-    .title {
+    .header__title {
       margin-left: 40px;
     }
-    .signin-btn {
+    .header__signin-btn {
       margin-right: 40px;
     }
-    .signedin-btn {
+    .header__signedin-btn {
       margin-right: 40px;
     }
   }
 
   @media (min-width: 732px) {
-    .mobile {
+    .header__mobile {
       display: none;
     }
   }
 
   @media (max-width: 732px) {
-    .desktop {
+    .header__desktop {
       display: none;
     }
-    .title {
+    .header__title {
       margin-left: 16px;
     }
-    .signin-btn {
+    .header__signin-btn {
       margin-right: 16px;
     }
-    .dropdown {
+    .header__dropdown {
       margin-right: 16px;
+    }
+    .header__home-btn {
+      margin-left: 16px;
     }
   }
 `;
@@ -159,19 +163,17 @@ const DropdownContent = styled.div`
   background-color: rgba(0, 0, 0, 0.3);
   flex-direction: column;
 
-  .container {
+  .header__dropdown-content {
+    background: black;
+  }
+  .header__dropdown-container {
     background: black;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
-  .dropdown-content {
-    background: black;
-  }
-
-  .dropdown-home {
+  .header__dropdown-home {
     margin: 0 auto;
     color: white;
     height: 56px;
@@ -184,7 +186,7 @@ const DropdownContent = styled.div`
     text-decoration: none;
   }
 
-  .dropdown-signin {
+  .header__dropdown-signin {
     margin: 0 auto 24px;
     height: 56px;
     width: 288px;
@@ -194,15 +196,20 @@ const DropdownContent = styled.div`
     color: white;
   }
 
-  .dropdown-home:hover {
+  .header__dropdown-home:hover {
     cursor: pointer;
     font-size: 19px;
   }
 
-  .dropdown-signin:hover {
+  .header__dropdown-signin:hover {
     cursor: pointer;
     border: 2px solid #ffffff;
     font-weight: 700;
+  }
+  @media (max-width: 320px) {
+    .header__dropdown-home {
+      margin-left: 16px;
+    }
   }
 `;
 

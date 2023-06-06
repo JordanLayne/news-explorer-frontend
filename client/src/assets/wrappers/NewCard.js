@@ -1,5 +1,7 @@
 import styled from "styled-components";
-
+import bookmark from "../images/bookmark.svg";
+import bookmarked from "../images/bookmarked.svg";
+import bookmarkHover from "../images/bookmarkHover.svg";
 const Wrapper = styled.section`
   display: flex;
   flex-wrap: wrap;
@@ -15,10 +17,6 @@ const Wrapper = styled.section`
     height: 576px;
     width: 400px;
     border-radius: 15px;
-  }
-
-  .container-save:hover img {
-    filter: brightness(0.1);
   }
 
   .container-top {
@@ -40,7 +38,7 @@ const Wrapper = styled.section`
     border: none;
     cursor: pointer;
   }
-  .card-sign-in {
+  .container-signin {
     position: relative;
     font-family: "Roboto";
     font-style: normal;
@@ -57,7 +55,7 @@ const Wrapper = styled.section`
     text-align: center;
     padding: 0;
   }
-  .card-sign-in:hover {
+  .container-signin:hover {
     cursor: pointer;
     font-weight: 600;
   }
@@ -125,7 +123,19 @@ const Wrapper = styled.section`
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
+.bookmark{
+  background-image: url(${bookmark});
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.bookmarked{
+  background-image: url(${bookmarked});
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.bookmark:hover{
+  background-image: url(${bookmarkHover});
+}
   @media (max-width: 800px) {
     .container {
       height: 420px;

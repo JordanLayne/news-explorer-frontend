@@ -30,41 +30,52 @@ const SavedNewsHeader = () => {
   return (
     <>
       <HeaderWrapper className={showDropdown ? "open" : ""}>
-        <div className={`title ${showDropdown ? "opened" : ""}`}>
+        <div
+          className={`header__title ${
+            showDropdown ? "header__title--opened" : ""
+          }`}
+        >
           NewsExplorer
         </div>
-        <button className="dropdown mobile" onClick={toggleDropdown}>
+        <button
+          className="header__dropdown header__mobile"
+          onClick={toggleDropdown}
+        >
           <img
             src={showDropdown ? closeIcon : dropdownIcon}
             alt="dropdown"
-            className="header-btn"
+            className="header__btn"
           />
         </button>
 
-        <Link to="/" className="home-btn desktop">
+        <Link to="/" className="header__home-btn header__desktop">
           Home
         </Link>
 
-        <p className="save-articles-btn desktop ">Saved articles</p>
-        <button className="signedin-btn desktop">
-          <p className="btn-text">Elise</p>
-          <img
-            className="btn-img"
-            src={logoutIcon}
-            alt="logout"
-            onClick={signOut}
-          />
+        <p className="header__save-articles-btn header__desktop">
+          Saved articles
+        </p>
+        <button
+          className="header__signedin-btn header__desktop"
+          onClick={signOut}
+        >
+          <p className="header__btn-text">Elise</p>
+          <img className="header__btn-img" src={logoutIcon} alt="logout" />
         </button>
       </HeaderWrapper>
       {showDropdown && (
         <DropdownContent
-          className={`dropdown-content ${showDropdown ? "open" : ""}`}
+          className={`header__dropdown-content ${showDropdown ? "open" : ""}`}
         >
-          <div className="container">
-            <Link to="/" className="dropdown-home" onClick={toggleDropdown}>
+          <div className="header__dropdown-container">
+            <Link
+              to="/"
+              className="header__dropdown-home"
+              onClick={toggleDropdown}
+            >
               Home
             </Link>
-            <button className="dropdown-signin" onClick={signOut}>
+            <button className="header__dropdown-signin" onClick={signOut}>
               Sign out
             </button>
           </div>
