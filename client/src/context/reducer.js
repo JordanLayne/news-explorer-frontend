@@ -6,7 +6,9 @@ import {
   DISPLAY_ALERT,
   CLEAR_ALERT,
   SET_IS_LOGGEDIN,
-  SIGN_OUT
+  SIGN_OUT,
+  SET_SEARCH_BUTTON_CLICKED,
+  SET_SEARCH_QUERY,
 } from "./actions";
 
 const reducer = (state, action) => {
@@ -35,7 +37,8 @@ const reducer = (state, action) => {
   if (action.type === TOGGLE_MODAL) {
     return {
       ...state,
-      showModal: !state.showModal,
+      showModal: action.payload.showModal,
+      modalType: action.payload.modalType,
     };
   }
   if (action.type === SET_IS_LOGGEDIN) {
@@ -67,10 +70,22 @@ const reducer = (state, action) => {
     return {
       ...state,
       isLoggedIn: false,
-      showDropdown:false,
+      showDropdown: false,
+    };
+  }
+  if (action.type === SET_SEARCH_BUTTON_CLICKED) {
+    return {
+      ...state,
+      searchButtonClicked: action.payload,
     };
   }
 
+  if (action.type === SET_SEARCH_QUERY) {
+    return {
+      ...state,
+      searchQuery: action.payload,
+    };
+  }
   throw new Error(`no such action : ${action.type}`);
 };
 

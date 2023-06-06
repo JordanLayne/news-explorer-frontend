@@ -1,75 +1,129 @@
 import styled from "styled-components";
 
 const Wrapper = styled.section`
-  background: white;
   display: flex;
+  background: white;
   align-items: center;
-  .footer-text {
-    margin: 24px auto 18px 40px;
+  justify-content: space-between;
+  height: 80px;
+
+  .btn-container {
+    margin: 0 41px 0 auto;
+    padding: 0;
+    list-style: none;
   }
-  .home-btn {
-    margin: 24px 40px 18px 0;
-    border: none;
-    background: none;
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    padding-left: 5px;
-    line-height: 24px;
-    cursor: pointer;
-    text-decoration: none;
-   color: black;
+
+  .icon-container {
+    margin: 0 106px 0 0;
+    padding: 0;
   }
-  .practicum-btn {
-    margin: 24px 41px 18px 0;
-    border: none;
-    background: none;
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
-    cursor: pointer;
-  }
+
   .gh-icon {
-    margin: 24px 26px 18px 0;
-    cursor: pointer;
-  }
-  .fb-icon {
-    margin: 24px 24px 18px 0;
+    margin-right: 27px;
     cursor: pointer;
   }
 
-  @media (max-width: 632px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    .btn-container {
-      height: 74px;
-      width: 200px;
-      margin-left: 16px;
+  .fb-icon {
+    cursor: pointer;
+  }
+
+  .footer-text {
+    margin: 0;
+    padding: 0;
+    margin-left: 104px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #b6bcbf;
+  }
+
+  .footer-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-nav__link {
+    margin-right: 40px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+  }
+
+  .footer-nav__button {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    text-decoration: none;
+    color: black;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  @media (max-width: 800px) {
+    .icon-container {
+      margin: 0 21px 0 0;
+      padding: 0;
     }
-    .home-btn {
-      margin: 20px 80px 21px 0;
-    }
-    .practicum-btn {
-      margin: 0%;
-    }
+
     .footer-text {
-      order: 3;
-      margin-top: 38px;
+      margin: 0 auto 0 40px;
     }
-    .gh-icon {
-      margin: 0 27px 0 17px;
-    }
-    .fb-icon {
-      margin: 0 17px 0 0;
+
+    .footer-nav__button {
+      padding: 0;
     }
   }
-  @media (max-width: 321px) {
+
+  @media (max-width: 532px) {
+    margin-top: 20px;
+    height: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .btn-container {
+      display: flex;
+      flex-direction: column;
+      width: 200px;
+      height: 74px;
+      justify-content: space-between;
+      margin: 0 0 22px 0;
+    }
+
+    .icon-container {
+      height: 74px;
+      margin: 0;
+      order: 2;
+      margin: 0 0 22px 0;
+    }
+
     .gh-icon {
-      margin: 0 27px 0 10px;
+      margin-right: 27px;
+    }
+
+    .footer-text {
+      order: 3;
+      margin: 0 auto 22px;
+    }
+    .footer-nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .footer-nav__link {
+      margin-bottom: 26px;
     }
   }
 `;
+
 export default Wrapper;

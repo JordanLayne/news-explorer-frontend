@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Wrapper from "../assets/wrappers/NewCardList";
+import CardListWrapper from "../assets/wrappers/NewCardList";
 import { useAppContext } from "../context/appContext";
 import { getSearchResults } from "../utils/api";
 import NewCard from "./NewsCard";
 import Preloader from "./Preloader";
-const NewCardList = ({ query }) => {
-  const { setIsLoading, isLoading } = useAppContext();
+import img from "../assets/images/not-found.svg";
+
+const NewCardList = () => {
+  const { setIsLoading, isLoading, searchQuery, searchButtonClicked } =
+    useAppContext();
   const [results, setResults] = useState([]);
   const [visibleResults, setVisibleResults] = useState(3);
 
@@ -13,45 +16,61 @@ const NewCardList = ({ query }) => {
     const fetchSearchResults = async () => {
       try {
         setIsLoading(true);
-        const searchResults = await getSearchResults(query);
+        const searchResults = await getSearchResults(searchQuery);
         setResults(searchResults);
       } catch (error) {
         console.error("Error:", error);
       }
       setIsLoading(false);
     };
-    if (query) {
+    if (searchButtonClicked) {
+      setVisibleResults(3);
       fetchSearchResults();
     }
     // eslint-disable-next-line
-  }, [query]);
+  }, [searchQuery]);
+
   const handleShowMore = () => {
     setVisibleResults((prevVisibleResults) => prevVisibleResults + 3);
   };
 
-  return (
-    <Wrapper>
+  return searchButtonClicked ? (
+    <CardListWrapper>
       {isLoading ? (
         <Preloader />
       ) : (
         <>
-          <h1 className="search-title">Search results</h1>
-          <div className="search-results">
+          {results && results.length > visibleResults ? (
+            <h1 className="card-list__search-title">Search results</h1>
+          ) : null}
+          <ul className="card-list__search-results">
             {results && results.length > 0 ? (
               <NewCard searchResults={results.slice(0, visibleResults)} />
             ) : (
-              <p>No results found.</p>
+              <li className="card-list__no-result-container">
+                <article className="card-list__no-result-article">
+                  <img
+                    src={img}
+                    alt="Not Found"
+                    className="card-list__no-result-img"
+                  />
+                  <p className="card-list__no-result-title">Nothing found</p>
+                  <p className="card-list__no-result-text">
+                    Sorry, but nothing matched your search terms.
+                  </p>
+                </article>
+              </li>
             )}
-          </div>
+          </ul>
           {results && results.length > visibleResults && (
-            <button className="show-btn" onClick={handleShowMore}>
+            <button className="card-list__show-btn" onClick={handleShowMore}>
               Show more
             </button>
           )}
         </>
       )}
-    </Wrapper>
-  );
+    </CardListWrapper>
+  ) : null;
 };
 
 export default NewCardList;

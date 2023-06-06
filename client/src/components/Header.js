@@ -1,3 +1,4 @@
+import React from 'react';
 import HeaderWrapper, { DropdownContent } from "../assets/wrappers/Header";
 import { useAppContext } from "../context/appContext";
 import dropdownIcon from "../assets/images/menu.svg";
@@ -27,54 +28,101 @@ const Header = () => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, [showDropdown, toggleDropdown]);
-
+  const handleSignInClick = () => {
+    toggleDropdown(false);
+    toggleModal(true, "register");
+  };
   return (
     <>
       <HeaderWrapper className={showDropdown ? "open" : ""}>
-        <div className="title">NewsExplorer</div>
-        <button className="dropdown mobile" onClick={toggleDropdown}>
+        <h1 className="header__title">NewsExplorer</h1>
+        <button className="header__dropdown header__mobile" onClick={toggleDropdown}>
           <img
             src={showDropdown ? closeIcon : dropdownIcon}
             alt="dropdown"
-            className="header-btn"
+            className="header__btn"
           />
         </button>
 
-        <button className="home-btn desktop">Home</button>
+        <button className="header__home-btn header__desktop">Home</button>
 
-        {isLoggedIn ? (
-          <>
-            <Link to="saved-articles" className="save-articles-btn desktop">
-              Saved articles
-            </Link>
-            <button className="signedin-btn desktop" onClick={signOut}>
-              <p className="btn-text">Elise</p>
-              <img className="btn-img" src={logoutIcon} alt="logout" />
-            </button>
-          </>
-        ) : (
-          <button className="signin-btn desktop" onClick={toggleModal}>
-            Sign in
-          </button>
-        )}
+        <nav>
+          <ul className="header__menu header__desktop">
+            {isLoggedIn ? (
+              <>
+                <li>
+                  <Link
+                    to="saved-articles"
+                    className="header__save-articles-btn header__desktop"
+                  >
+                    Saved articles
+                  </Link>
+                </li>
+                <li>
+                  <button className="header__signedin-btn header__desktop" onClick={signOut}>
+                    <p className="btn-text">Elise</p>
+                    <img className="btn-img" src={logoutIcon} alt="logout" />
+                  </button>
+                </li>
+              </>
+            ) : (
+              <li>
+                <button
+                  className="header__signin-btn header__desktop"
+                  onClick={() => toggleModal(true, "register")}
+                >
+                  Sign in
+                </button>
+              </li>
+            )}
+          </ul>
+        </nav>
       </HeaderWrapper>
       {showDropdown && (
-        <DropdownContent
-          className={`dropdown-content ${showDropdown ? "open" : ""}`}
-        >
-          <div className="container">
-            <Link to="/" className="dropdown-home" onClick={toggleDropdown}>
-              Home
-            </Link>
-            {!isLoggedIn ? (
-              <button className="dropdown-signin" onClick={toggleModal}>
-                Sign in
-              </button>
-            ) : (
-              <button className="dropdown-signin" onClick={signOut}>
-                Sign out
-              </button>
-            )}
+        <DropdownContent className={showDropdown ? "open" : ""}>
+          <div className="header-container">
+            <nav>
+              <ul className="header__dropdown-menu">
+                {!isLoggedIn ? (
+                  <>
+                    <li>
+                      <Link
+                        to="/"
+                        className="header__dropdown-home"
+                        onClick={toggleDropdown}
+                      >
+                        Home
+                      </Link>
+                    </li>
+                    <li>
+                      <button
+                        className="header__dropdown-signin"
+                        onClick={handleSignInClick}
+                      >
+                        Sign in
+                      </button>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <Link
+                        to="saved-articles"
+                        className="header__dropdown-home"
+                        onClick={toggleDropdown}
+                      >
+                        Saved Articles
+                      </Link>
+                    </li>
+                    <li>
+                      <button className="header__dropdown-signin" onClick={signOut}>
+                        Sign out
+                      </button>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </nav>
           </div>
         </DropdownContent>
       )}

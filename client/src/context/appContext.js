@@ -9,7 +9,9 @@ import {
   CLEAR_ALERT,
   DISPLAY_ALERT,
   SET_IS_LOGGEDIN,
-  SIGN_OUT
+  SIGN_OUT,
+  SET_SEARCH_BUTTON_CLICKED,
+  SET_SEARCH_QUERY,
 } from "./actions";
 
 const initialState = {
@@ -21,6 +23,9 @@ const initialState = {
   isLoggedIn: false,
   showModal: false,
   saved: {},
+  searchButtonClicked: false,
+  searchQuery: "",
+  modalType: "",
 };
 
 const AppContext = React.createContext();
@@ -43,8 +48,8 @@ const AppProvider = ({ children }) => {
   const toggleDropdown = () => {
     dispatch({ type: TOGGLE_DROPDOWN });
   };
-  const toggleModal = () => {
-    dispatch({ type: TOGGLE_MODAL });
+  const toggleModal = (showModal, modalType = "") => {
+    dispatch({ type: TOGGLE_MODAL, payload: { showModal, modalType } });
   };
   const toggleBookmark = (id) => {
     dispatch({ type: TOGGLE_BOOKMARK, payload: id });
@@ -55,6 +60,17 @@ const AppProvider = ({ children }) => {
   const signOut = () => {
     dispatch({ type: SIGN_OUT });
   };
+  const setSearchButtonClicked = (searchButtonClicked) => {
+    dispatch({ type: SET_SEARCH_BUTTON_CLICKED, payload: searchButtonClicked });
+  };
+  const setSearchQuery = (query) => {
+    dispatch({
+      type: SET_SEARCH_QUERY,
+      payload: query,
+    });
+  };
+ 
+
   return (
     <AppContext.Provider
       value={{
@@ -66,7 +82,10 @@ const AppProvider = ({ children }) => {
         clearAlert,
         displayAlert,
         setIsLoggedin,
-        signOut
+        signOut,
+        setSearchButtonClicked,
+        setSearchQuery,
+  
       }}
     >
       {children}
