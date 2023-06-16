@@ -87,7 +87,15 @@ const HeaderWrapper = styled.header`
     border: none;
     cursor: pointer;
   }
+  .header-btn-text {
+    margin-right: 17px;
 
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+  }
   .header__home-btn {
     font-family: "Roboto";
     font-weight: 500;

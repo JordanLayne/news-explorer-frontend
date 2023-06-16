@@ -7,11 +7,14 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="saved-articles" element={
-          <ProtectedRoute>
-        <SavedArticles />
-        </ProtectedRoute>
-        } />
+        <Route
+          path="saved-articles"
+          element={
+            <ProtectedRoute>
+              <SavedArticles />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

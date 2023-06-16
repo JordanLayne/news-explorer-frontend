@@ -60,8 +60,8 @@ const Header = () => {
                 </li>
                 <li>
                   <button className="header__signedin-btn header__desktop" onClick={signOut}>
-                    <p className="btn-text">Elise</p>
-                    <img className="btn-img" src={logoutIcon} alt="logout" />
+                    <p className="header-btn-text">Elise</p>
+                    <img className="header-btn-img" src={logoutIcon} alt="logout" />
                   </button>
                 </li>
               </>
