@@ -9,6 +9,6 @@ export const processRes = (res) => {
   
   export const baseUrl = process.env.NODE_ENV === 'production' 
   ? 'https://api.news-explorer.twilightparadox.com'
-  : 'https://localhost:3000';
-  
+  : 'http://localhost:3000';
+
   

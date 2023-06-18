@@ -60,7 +60,7 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const api = axios.create({
-    baseURL: {baseUrl},
+    baseURL: baseUrl,
   });
 
   api.interceptors.request.use((config) => {
@@ -113,27 +113,31 @@ const AppProvider = ({ children }) => {
   const setupUser = async ({ currentUser, endPoint, alertText }) => {
     dispatch({ type: SETUP_USER_BEGIN });
     try {
-      const { data } = await api.post(`/${endPoint}`, currentUser);
-
-      const { user, token } = data;
-      dispatch({
-        type: SETUP_USER_SUCCESS,
-        payload: { user, alertText },
-      });
-
-      dispatch({ type: SET_TOKEN, payload: token });
-      if (endPoint === "signup") {
-        toggleModal(true, "success");
-      }
-      if (endPoint === "signin") {
-        toggleModal(false);
-        setIsLoggedin(true);
-        getCurrentUser(token);
+      const response = await api.post(`/${endPoint}`, currentUser);
+  
+      if (response.data) {
+        const { user, token } = response.data;
+        dispatch({
+          type: SETUP_USER_SUCCESS,
+          payload: { user, alertText },
+        });
+  
+        dispatch({ type: SET_TOKEN, payload: token });
+        if (endPoint === "signup") {
+          toggleModal(true, "success");
+        }
+        if (endPoint === "signin") {
+          toggleModal(false);
+          setIsLoggedin(true);
+          getCurrentUser(token);
+        }
+      } else {
+        throw new Error("Invalid response");
       }
     } catch (error) {
       dispatch({
         type: SETUP_USER_ERROR,
-        payload: { msg: error.response.data.message },
+        payload: { msg: error.response ? error.response.data.message : "Something went wrong" },
       });
     }
     clearAlert();

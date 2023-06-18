@@ -5,9 +5,9 @@ import Wrapper from "../assets/wrappers/Register";
 import FormRow from "./FormRow";
 import Alert from "./Alert";
 const initialState = {
-  name: '',
-  email: '',
-  password: '',
+  name: "",
+  email: "",
+  password: "",
   isMember: true,
 };
 const Register = () => {
@@ -155,7 +155,10 @@ const Register = () => {
             <button
               className="success-modal__signin-btn"
               type="button"
-              onClick={() => toggleModal(true, "register")}
+              onClick={() => {
+                toggleModal(true, "register");
+                setValues(initialState);
+              }}
             >
               Sign in
             </button>
