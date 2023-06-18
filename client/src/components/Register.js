@@ -4,23 +4,17 @@ import img from "../assets/images/close.svg";
 import Wrapper from "../assets/wrappers/Register";
 import FormRow from "./FormRow";
 import Alert from "./Alert";
-
+const initialState = {
+  name: '',
+  email: '',
+  password: '',
+  isMember: true,
+};
 const Register = () => {
-  const {
-    toggleModal,
-    showModal,
-    showAlert,
-    displayAlert,
-    setIsLoggedin,
-    modalType,
-  } = useAppContext();
-
-  const [values, setValues] = useState({
-    email: "",
-    password: "",
-    username: "",
-    isMember: true,
-  });
+  const { setupUser } = useAppContext();
+  const [values, setValues] = useState(initialState);
+  const { toggleModal, showModal, showAlert, displayAlert, modalType } =
+    useAppContext();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,28 +33,38 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { username, email, password, isMember } = values;
-    if (!email || !password || (!isMember && !username)) {
+    const { name, email, password, isMember } = values;
+    if (!email || !password) {
       displayAlert();
       return;
     }
 
     if (isMember) {
-      setIsLoggedin(true);
-      toggleModal(false);
+      setupUser({
+        currentUser: {
+          email,
+          password,
+        },
+        endPoint: "signin",
+      });
     } else {
-      toggleModal(true, "success");
-    }
-    setValues({
-      email: "",
-      password: "",
-      username: "",
-      isMember: true,
-    });
-  };
+      if (!name) {
+        displayAlert();
+        return;
+      }
 
+      setupUser({
+        currentUser: {
+          name,
+          email,
+          password,
+        },
+        endPoint: "signup",
+      });
+    }
+  };
   const isAllInputsFilled =
-    values.email && values.password && (values.isMember || values.username);
+    values.email && values.password && (values.isMember || values.name);
 
   const renderRegisterModal = () => {
     if (showModal && modalType === "register") {
@@ -71,7 +75,10 @@ const Register = () => {
               src={img}
               alt="Close Icon"
               className="register-modal__close-icon"
-              onClick={() => toggleModal(false)}
+              onClick={() => {
+                toggleModal(false);
+                setValues(initialState);
+              }}
             />
           </button>
           <form className="register-modal" onSubmit={handleSubmit}>
@@ -98,8 +105,8 @@ const Register = () => {
               <>
                 <FormRow
                   type="text"
-                  name="username"
-                  value={values.username}
+                  name="name"
+                  value={values.name}
                   handleChange={handleChange}
                   required
                 />

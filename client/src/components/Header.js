@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const { toggleDropdown, showDropdown, toggleModal, isLoggedIn, signOut } =
+  const { toggleDropdown, showDropdown, toggleModal, isLoggedIn, signOut,user } =
     useAppContext();
 
   useEffect(() => {
@@ -17,7 +17,6 @@ const Header = () => {
         toggleDropdown(false);
       }
     };
-
     const handleWindowResize = () => {
       handleResize();
     };
@@ -60,8 +59,8 @@ const Header = () => {
                 </li>
                 <li>
                   <button className="header__signedin-btn header__desktop" onClick={signOut}>
-                    <p className="header-btn-text">Elise</p>
-                    <img className="header-btn-img" src={logoutIcon} alt="logout" />
+                    <p className="header-btn-text">{user?.data?.name}</p>
+                    <img className="header__btn-img" src={logoutIcon} alt="logout" />
                   </button>
                 </li>
               </>

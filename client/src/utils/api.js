@@ -13,18 +13,34 @@ export const getSearchResults = async (query) => {
     const data = await response.json();
 
     if (response.ok) {
-      const results = data.articles.map((article) => ({
-        id: generateRandomId(),
-        title: article.title,
-        description: article.description,
-        date: new Date(article.publishedAt).toLocaleDateString(undefined, {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        }),
-        author: article.author,
-        imageUrl: article.urlToImage,
-      }));
+      const results = data.articles.map((article) => {
+        const backupTitle = "Backup Article Title";
+        const backupImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png";
+        const backupText = "This is a backup article description.";
+        const backupSource = "Backup Source";
+        const backupLink = "https://example.com/backup-article";
+
+        return {
+          id: generateRandomId(),
+          keyword: query,
+          title: article.title || backupTitle,
+          image: article.urlToImage || backupImage,
+          text: article.description || backupText,
+          date: article.publishedAt
+            ? new Date(article.publishedAt).toLocaleDateString(undefined, {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })
+            : new Date().toLocaleDateString(undefined, {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }),
+          source: article.source.name || backupSource,
+          link: article.url || backupLink,
+        };
+      });
 
       return results;
     } else {
@@ -35,7 +51,6 @@ export const getSearchResults = async (query) => {
     throw error;
   }
 };
-
 const generateRandomId = () => {
-  return Math.random().toString(36).substr(2, 9);
+  return Math.random().toString(36).substr(2, 9); 
 };
