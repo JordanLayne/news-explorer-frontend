@@ -60,7 +60,7 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const api = axios.create({
-    baseURL: "http://localhost:3000",
+    baseURL: {baseUrl},
   });
 
   api.interceptors.request.use((config) => {
@@ -90,9 +90,7 @@ const AppProvider = ({ children }) => {
         .catch((error) => {
           console.log(error);
         });
-    } else {
-      dispatch({ type: SET_IS_LOGGEDIN });
-    }
+    } 
     // eslint-disable-next-line
   }, []);
 
