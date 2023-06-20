@@ -5,7 +5,4 @@ export const processRes = (res) => {
   return Promise.reject(`Error: ${res.status}`);
 };
 
-export const baseUrl =
-  process.env.NODE_ENV === "production"
-    ? "https://api.news-explorer.twilightparadox.com"
-    : "http://localhost:3000";
+export const baseUrl = "https://api.news-explorer.twilightparadox.com"
