@@ -8,14 +8,15 @@ export const getSearchResults = async (query) => {
     const toDate = currentDate.toISOString().split("T")[0];
 
     const response = await fetch(
-      `https://newsapi.org/v2/everything?q=${query}&apiKey=${API_KEY}&from=${fromDate}&to=${toDate}&pageSize=100`
+      `https://nomoreparties.co/news/v2/everything?q=${query}&apiKey=${API_KEY}&from=${fromDate}&to=${toDate}&pageSize=100`
     );
     const data = await response.json();
 
     if (response.ok) {
       const results = data.articles.map((article) => {
         const backupTitle = "Backup Article Title";
-        const backupImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png";
+        const backupImage =
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png";
         const backupText = "This is a backup article description.";
         const backupSource = "Backup Source";
         const backupLink = "https://example.com/backup-article";
