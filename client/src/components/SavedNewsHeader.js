@@ -9,7 +9,7 @@ import logoutIcon from "../assets/images/UnionDark.svg";
 import { useEffect } from "react";
 
 const SavedNewsHeader = () => {
-  const { toggleDropdown, showDropdown, signOut } = useAppContext();
+  const { toggleDropdown, showDropdown, signOut,user } = useAppContext();
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 732 && showDropdown) {
@@ -59,7 +59,7 @@ const SavedNewsHeader = () => {
           className="header__signedin-btn header__desktop"
           onClick={signOut}
         >
-          <p className="header__btn-text">Elise</p>
+          <p className="header__btn-text">{user?.data?.name}</p>
           <img className="header__btn-img" src={logoutIcon} alt="logout" />
         </button>
       </HeaderWrapper>

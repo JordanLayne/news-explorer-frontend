@@ -88,13 +88,18 @@ const HeaderWrapper = styled.header`
     cursor: pointer;
   }
   .header-btn-text {
-    margin-right: 17px;
-
+    padding: 0;
+    margin: 0;
+    height: 24px;
+    width: 56px;
+    margin-left: 2px;
     font-family: "Roboto";
-    font-style: normal;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 24px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   .header__home-btn {
     font-family: "Roboto";

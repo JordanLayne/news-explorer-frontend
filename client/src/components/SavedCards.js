@@ -1,58 +1,67 @@
-import React, { useState } from "react";
-import Wrapper from "../assets/wrappers/SavedCard";
+import React, { useState} from "react";
+import SavedCardWrapper from "../assets/wrappers/SavedCard";
+import { useAppContext } from "../context/appContext";
+import { useLocation } from "react-router-dom";
 
-const SavedCard = ({ searchResults }) => {
+const SavedCard = ({ savedCards }) => {
   const [confirmRemoveId, setConfirmRemoveId] = useState(null);
-  const [cards, setCards] = useState(searchResults);
-
-  const handleRemoveCard = (id) => {
-    setConfirmRemoveId(id);
+  const { handleRemoveArticle } = useAppContext();
+  const [cards, setCards] = useState(savedCards);
+  const location = useLocation();
+  const handleRemoveCard = (_id) => {
+    setConfirmRemoveId(_id);
   };
 
-  const handleConfirmRemove = () => {
-    if (confirmRemoveId !== null) {
-      const updatedCards = cards.filter((card) => card.id !== confirmRemoveId);
-      setCards(updatedCards);
-      setConfirmRemoveId(null);
+  const handleConfirmRemove = (_id) => {
+    if (_id !== null) {
+      handleRemoveArticle(_id,location.pathname)
+        .then(() => {
+          const updatedCards = cards.filter((card) => card._id !== _id);
+          setCards(updatedCards);
+          setConfirmRemoveId(null);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   };
 
   return (
-    <Wrapper>
+    <SavedCardWrapper>
       {cards.map((card) => (
-        <React.Fragment key={card.id}>
+        <React.Fragment key={card._id}>
           <div className="container">
             <div
               className="container-top"
-              style={{ backgroundImage: `url(${card.imageUrl})` }}
+              style={{ backgroundImage: `url(${card.image})` }}
             >
               <div className="container-keyword">{card.keyword}</div>
 
-              {confirmRemoveId === card.id && (
+              {confirmRemoveId === card._id && (
                 <button
                   className="container-remove"
-                  onClick={handleConfirmRemove}
+                  onClick={() => handleConfirmRemove(card._id)}
                 >
                   Remove from saved
                 </button>
               )}
               <button
                 className={`container-delete ${
-                  confirmRemoveId === card.id ? "deleted" : ""
+                  confirmRemoveId === card._id ? "deleted" : ""
                 }`}
-                onClick={() => handleRemoveCard(card.id)}
+                onClick={() => handleRemoveCard(card._id)}
               ></button>
             </div>
             <div className="container-bottom">
               <p className="container-date">{card.date}</p>
               <h2 className="container-title">{card.title}</h2>
-              <p className="container-description">{card.description}</p>
-              <p className="container-author">{card.author}</p>
+              <p className="container-description">{card.text}</p>
+              <p className="container-author">{card.source}</p>
             </div>
           </div>
         </React.Fragment>
       ))}
-    </Wrapper>
+    </SavedCardWrapper>
   );
 };
 

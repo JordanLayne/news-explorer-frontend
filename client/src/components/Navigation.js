@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const Navigation = () => {
-  const { setSearchButtonClicked, setSearchQuery, searchButtonClicked } =
+  const { setSearchButtonClicked, setSearchQuery, searchButtonClicked, getSearchResults } =
     useAppContext();
   const [values, setValues] = useState(initialState);
 
@@ -26,6 +26,7 @@ const Navigation = () => {
     }));
     setSearchButtonClicked(true);
     setSearchQuery(values.searchInput);
+    getSearchResults(values.searchInput);
   };
 
   return (
