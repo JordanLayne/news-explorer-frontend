@@ -6,6 +6,8 @@ const NewCard = ({ searchResults, visibleResults }) => {
   const { toggleBookmark, saved, isLoggedIn, toggleModal, handleAddArticle,handleRemoveArticle,savedCards } =
     useAppContext();
   const [showExtraDiv,setShowExtraDiv] = useState(null);
+
+
   const handleBookmarkToggle = async (result) => {
     if (!isLoggedIn) {
       setShowExtraDiv(result.id);

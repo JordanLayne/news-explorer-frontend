@@ -3,7 +3,7 @@ import { addArticle, removeArticle, getArticles } from "../utils/mainApi";
 import axios from "axios";
 import { getSearchResults as getSearchResultsAPI } from "../utils/api";
 import reducer from "./reducer";
-import { processRes,baseUrl } from "../utils/constants";
+import { processRes, baseUrl } from "../utils/constants";
 import {
   TOGGLE_DROPDOWN,
   TOGGLE_MODAL,
@@ -90,7 +90,7 @@ const AppProvider = ({ children }) => {
         .catch((error) => {
           console.log(error);
         });
-    } 
+    }
     // eslint-disable-next-line
   }, []);
 
@@ -114,14 +114,14 @@ const AppProvider = ({ children }) => {
     dispatch({ type: SETUP_USER_BEGIN });
     try {
       const response = await api.post(`/${endPoint}`, currentUser);
-  
+
       if (response.data) {
         const { user, token } = response.data;
         dispatch({
           type: SETUP_USER_SUCCESS,
           payload: { user, alertText },
         });
-  
+
         dispatch({ type: SET_TOKEN, payload: token });
         if (endPoint === "signup") {
           toggleModal(true, "success");
@@ -134,11 +134,30 @@ const AppProvider = ({ children }) => {
       } else {
         throw new Error("Invalid response");
       }
-    } catch (error) {
-      dispatch({
-        type: SETUP_USER_ERROR,
-        payload: { msg: error.response ? error.response.data.message : "Something went wrong" },
-      });
+    }  catch (error) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.validation
+      ) {
+        const { body } = error.response.data.validation;
+        if (body && body.keys && body.keys.length > 0) {
+          const errorMessage = body.message;
+          dispatch({
+            type: SETUP_USER_ERROR,
+            payload: { msg: errorMessage },
+          });
+        }
+      } else {
+        dispatch({
+          type: SETUP_USER_ERROR,
+          payload: {
+            msg: error.response
+              ? error.response.data.message
+              : "Something went wrong",
+          },
+        });
+      }
     }
     clearAlert();
   };
@@ -165,13 +184,14 @@ const AppProvider = ({ children }) => {
             type: SET_SAVED_ARTICLE_STATS,
             payload: { numSavedArticles, keywords: uniqueKeywords },
           });
-          resolve(data);
+          resolve(updatedCard);
         })
         .catch((error) => {
           dispatch({
             type: SETUP_USER_ERROR,
             payload: { msg: error.response.data.message },
           });
+          reject(error);
         });
     });
   };
@@ -211,6 +231,7 @@ const AppProvider = ({ children }) => {
       dispatch({ type: SETUP_USER_SUCCESS, payload: { user, alertText: "" } });
       dispatch({ type: SET_TOKEN, payload: token });
       setIsLoggedin(true);
+      localStorage.setItem("jwt", token);
     } catch (error) {
       dispatch({
         type: SETUP_USER_ERROR,
